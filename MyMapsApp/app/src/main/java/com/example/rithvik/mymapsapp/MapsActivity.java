@@ -31,10 +31,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney, Australia, and move the camera.
-        LatLng sandiego = new LatLng(-34, 151);
+        LatLng sandiego = new LatLng(-32.799495, -117.154238);
         mMap.addMarker(new MarkerOptions().position(sandiego).title("Born here"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sandiego));
-        // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sandiego, 14));
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -47,8 +46,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
         mMap.setMyLocationEnabled(true);
-        //  mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(, 14));
-
 
     }
+
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+//        if (requestCode == MY_LOCATION_REQUEST_CODE) {
+//            if (permissions.length == 1 &&
+//                    permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
+//                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                mMap.setMyLocationEnabled(true);
+//            } else {
+//                // Permission was denied. Display an error message.
+//            }
+//        }
 }
