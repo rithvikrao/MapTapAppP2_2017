@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -31,7 +32,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney, Australia, and move the camera.
         LatLng sandiego = new LatLng(-32.799495, -117.154238);
         mMap.addMarker(new MarkerOptions().position(sandiego).title("Born here"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sandiego));
@@ -44,22 +44,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Log.d("MyMapsApp", "Failed permission check 2");
-            Log.d("MyMapsApp", Integer.toString(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)));
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
         }
         mMap.setMyLocationEnabled(true);
 
     }
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-//        if (requestCode == MY_LOCATION_REQUEST_CODE) {
-//            if (permissions.length == 1 &&
-//                    permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
-//                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                mMap.setMyLocationEnabled(true);
-//            } else {
-//                // Permission was denied. Display an error message.
-//            }
-//        }
+    public void toggleView(View view) {
+        if(mMap.getMapType() == GoogleMap.MAP_TYPE_NORMAL) {
+            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        }
+
+        else {
+            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        }
+    }
+
 }
