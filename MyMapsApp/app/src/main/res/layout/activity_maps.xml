@@ -8,7 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear" />
 
         <Button
             android:id="@+id/button_view"
@@ -24,6 +31,13 @@
             android:layout_weight="1"
             android:onClick="getLocation"
             android:text="TRACK ME" />
+
+        <SearchView
+            android:id="@+id/searchview_poi"
+            android:iconifiedByDefault="false"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.37" />
 
     </LinearLayout>
 
